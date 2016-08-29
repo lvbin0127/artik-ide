@@ -27,10 +27,5 @@ public class ArtikMachineModule extends AbstractModule {
                                          org.eclipse.che.api.machine.server.spi.InstanceProvider.class);
         machineProviderMultibinder.addBinding()
                                   .to(org.eclipse.che.plugin.machine.artik.ArtikMachineInstanceProvider.class);
-
-        Multibinder<org.eclipse.che.api.agent.server.terminal.MachineImplSpecificTerminalLauncher> terminalLaunchers =
-                Multibinder.newSetBinder(binder(),
-                                         org.eclipse.che.api.agent.server.terminal.MachineImplSpecificTerminalLauncher.class);
-        terminalLaunchers.addBinding().to(org.eclipse.che.plugin.machine.artik.ArtikMachineTerminalLauncher.class);
     }
 }
