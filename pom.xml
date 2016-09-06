@@ -60,7 +60,7 @@
                 <groupId>org.eclipse.artik</groupId>
                 <artifactId>artik-ide-assembly-wsagent-server</artifactId>
                 <version>${project.version}</version>
-                <type>zip</type>
+                <type>tar.gz</type>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.artik</groupId>

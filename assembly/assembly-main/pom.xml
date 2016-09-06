@@ -31,7 +31,7 @@
         <dependency>
             <groupId>org.eclipse.artik</groupId>
             <artifactId>artik-ide-assembly-wsagent-server</artifactId>
-            <type>zip</type>
+            <type>tar.gz</type>
         </dependency>
         <dependency>
             <groupId>org.eclipse.artik</groupId>
@@ -56,13 +56,13 @@
         <dependency>
             <groupId>org.eclipse.che.lib</groupId>
             <artifactId>che-websocket-terminal</artifactId>
-            <type>zip</type>
+            <type>tar.gz</type>
             <classifier>linux_amd64</classifier>
         </dependency>
         <dependency>
             <groupId>org.eclipse.che.lib</groupId>
             <artifactId>che-websocket-terminal</artifactId>
-            <type>zip</type>
+            <type>tar.gz</type>
             <classifier>linux_arm7</classifier>
         </dependency>
     </dependencies>
