@@ -50,7 +50,6 @@ import org.eclipse.che.plugin.artik.ide.ArtikLocalizationConstant;
 import org.eclipse.che.plugin.artik.ide.discovery.DeviceDiscoveryServiceClient;
 import org.eclipse.che.plugin.artik.ide.machine.DeviceServiceClient;
 import org.eclipse.che.plugin.artik.ide.profile.SoftwareManager;
-import org.eclipse.che.plugin.artik.ide.resourcemonitor.ResourceMonitor;
 import org.eclipse.che.plugin.artik.shared.dto.ArtikDeviceDto;
 
 import java.util.ArrayList;
@@ -76,16 +75,16 @@ public class ManageDevicesPresenter implements ManageDevicesView.ActionDelegate,
                                                WsAgentStateHandler,
                                                WorkspaceStoppedEvent.Handler,
                                                MachineStatusChangedEvent.Handler {
-    public final static String ARTIK_DEVICE_CONFIGURATION = "deviceConfiguration";
-    public final static String ARTIK_CATEGORY             = "artik";
-    public final static String SSH_CATEGORY               = "ssh-config";
-    public final static String DEFAULT_NAME               = "artik_device";
-    public final static String VALID_NAME                 = "[\\w-]*";
+    final static String ARTIK_CATEGORY = "artik";
+
+    private final static String ARTIK_DEVICE_CONFIGURATION = "deviceConfiguration";
+    private final static String SSH_CATEGORY               = "ssh-config";
+    private final static String DEFAULT_NAME               = "artik_device";
+    private final static String VALID_NAME                 = "[\\w-]*";
 
     private final ManageDevicesView               view;
     private final DeviceStatusSubscriptionHandler deviceStatusSubscriptionHandler;
     private final DtoFactory                      dtoFactory;
-    private final ResourceMonitor                 resourceMonitor;
     private final EntityFactory                   entityFactory;
     private final PreferencesManager              preferencesManager;
     private final DeviceServiceClient             deviceServiceClient;
@@ -108,7 +107,6 @@ public class ManageDevicesPresenter implements ManageDevicesView.ActionDelegate,
 
     @Inject
     public ManageDevicesPresenter(final ManageDevicesView view,
-                                  final ResourceMonitor resourceMonitor,
                                   final EntityFactory entityFactory,
                                   final DeviceStatusSubscriptionHandler deviceStatusSubscriptionHandler,
                                   final DtoFactory dtoFactory,
@@ -122,7 +120,6 @@ public class ManageDevicesPresenter implements ManageDevicesView.ActionDelegate,
                                   final MessageBusProvider messageBusProvider,
                                   final SoftwareManager softwareManager) {
         this.view = view;
-        this.resourceMonitor = resourceMonitor;
         this.entityFactory = entityFactory;
         this.deviceStatusSubscriptionHandler = deviceStatusSubscriptionHandler;
         this.dtoFactory = dtoFactory;
@@ -633,6 +630,8 @@ public class ManageDevicesPresenter implements ManageDevicesView.ActionDelegate,
                             updateDevices(machineName);
 
                             softwareManager.checkAndInstall(machineName);
+
+                            view.hide();
                         } else {
                             onConnectingFailed(null);
                         }
@@ -690,17 +689,15 @@ public class ManageDevicesPresenter implements ManageDevicesView.ActionDelegate,
 
     @Override
     public void onDeleteDevice(final Device device) {
-        dialogFactory.createConfirmDialog("IDE", locale.deviceDeleteConfirm(device.getName()),
-                                          new ConfirmCallback() {
-                                              @Override
-                                              public void accepted() {
-                                                  disconnectAndDelete(device);
-                                              }
-                                          }, new CancelCallback() {
-                    @Override
-                    public void cancelled() {
-                    }
-                }).show();
+        final String title = "Delete";
+        final String content = locale.deviceDeleteConfirm(device.getName());
+        final ConfirmCallback confirmCallback = new ConfirmCallback() {
+            @Override
+            public void accepted() {
+                disconnectAndDelete(device);
+            }
+        };
+        dialogFactory.createConfirmDialog(title, content, confirmCallback, null).show();
     }
 
     /**
@@ -795,6 +792,7 @@ public class ManageDevicesPresenter implements ManageDevicesView.ActionDelegate,
                 connectNotification.setStatus(StatusNotification.Status.SUCCESS);
                 softwareManager.checkAndInstall(deviceName);
                 updateDevices(deviceName);
+                view.hide();
             }
         });
     }
