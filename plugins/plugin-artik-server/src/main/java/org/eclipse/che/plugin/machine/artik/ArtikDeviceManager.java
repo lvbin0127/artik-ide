@@ -25,6 +25,7 @@ import org.eclipse.che.api.core.ServerException;
 import org.eclipse.che.api.core.model.machine.Command;
 import org.eclipse.che.api.core.model.machine.MachineLogMessage;
 import org.eclipse.che.api.core.model.machine.MachineStatus;
+import org.eclipse.che.api.core.util.LoggingUncaughtExceptionHandler;
 import org.eclipse.che.api.core.notification.EventService;
 import org.eclipse.che.api.core.util.AbstractLineConsumer;
 import org.eclipse.che.api.core.util.AbstractMessageConsumer;
@@ -112,6 +113,8 @@ public class ArtikDeviceManager {
         instances = new ConcurrentHashMap<>();
         checkers = new ConcurrentHashMap<>();
         executor = Executors.newCachedThreadPool(new ThreadFactoryBuilder().setNameFormat("ArtikDeviceManager-%d")
+                                                                           .setUncaughtExceptionHandler(
+                                                                                 LoggingUncaughtExceptionHandler.getInstance())
                                                                            .setDaemon(false)
                                                                            .build());
     }
