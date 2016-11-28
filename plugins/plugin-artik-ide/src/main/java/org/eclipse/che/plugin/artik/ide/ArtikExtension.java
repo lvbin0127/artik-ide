@@ -30,6 +30,7 @@ import org.eclipse.che.plugin.artik.ide.apidocs.DocsPartPresenter;
 import org.eclipse.che.plugin.artik.ide.apidocs.ShowDocsAction;
 import org.eclipse.che.plugin.artik.ide.command.macro.ReplicationFolderMacroRegistrar;
 import org.eclipse.che.plugin.artik.ide.command.options.EditCompilationOptionsAction;
+import org.eclipse.che.plugin.artik.ide.installpkg.PackageInstallerContextMenuAction;
 import org.eclipse.che.plugin.artik.ide.keyworddoc.ShowKeywordDocsAction;
 import org.eclipse.che.plugin.artik.ide.manage.ManageArtikDevicesAction;
 import org.eclipse.che.plugin.artik.ide.profile.ArtikProfileContextMenuGroup;
@@ -97,6 +98,7 @@ public class ArtikExtension {
                                 ArtikProfileContextMenuGroup artikProfileContextMenuGroup,
                                 TurnDevelopmentModeContextMenuAction turnDevelopmentModeContextMenuAction,
                                 TurnProductionModeContextMenuAction turnProductionModeContextMenuAction,
+                                PackageInstallerContextMenuAction packageInstallerContextMenuAction,
                                 EditCompilationOptionsAction editCompilationOptionsAction,
                                 ReplicationFolderMacroRegistrar replicationFolderMacroRegistrar) {
         final DefaultActionGroup artikGroup = new DefaultActionGroup(ARTIK_GROUP_MAIN_MENU, true, actionManager);
@@ -128,6 +130,7 @@ public class ArtikExtension {
 
         artikProfileContextMenuGroup.add(turnDevelopmentModeContextMenuAction);
         artikProfileContextMenuGroup.add(turnProductionModeContextMenuAction);
+        artikProfileContextMenuGroup.add(packageInstallerContextMenuAction);
 
         DefaultActionGroup projectMainMenu = (DefaultActionGroup)actionManager.getAction(GROUP_PROJECT);
         projectMainMenu.addSeparator();

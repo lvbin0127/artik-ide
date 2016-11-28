@@ -11,6 +11,9 @@
  *******************************************************************************/
 package org.eclipse.che.plugin.artik.ide.profile;
 
+import org.eclipse.che.api.core.model.machine.Machine;
+import org.eclipse.che.plugin.artik.ide.installpkg.PackageInstallerAction;
+
 /**
  * Factory for creating actions to switch Artik profile.
  *
@@ -38,4 +41,14 @@ public interface ArtikModeActionFactory {
      */
     TurnProductionModeAction turnProductionModeAction(String machineName);
 
+    /**
+     *Creates PackageInstallerAction instance with a given Artik machine name.
+     *
+     * @param machine
+     *          Artik machine
+     * @return
+     *          new instance of PackageInstallerAction
+     */
+
+    PackageInstallerAction packageInstallerAction(Machine machine);
 }

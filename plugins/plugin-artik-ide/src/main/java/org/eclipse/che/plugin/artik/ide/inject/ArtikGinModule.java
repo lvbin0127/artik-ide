@@ -35,6 +35,7 @@ import org.eclipse.che.plugin.artik.ide.debug.DebugAndRunBinaryActionsManager;
 import org.eclipse.che.plugin.artik.ide.debug.DebugBinaryActionFactory;
 import org.eclipse.che.plugin.artik.ide.discovery.DeviceDiscoveryServiceClient;
 import org.eclipse.che.plugin.artik.ide.discovery.DeviceDiscoveryServiceClientImpl;
+import org.eclipse.che.plugin.artik.ide.installpkg.PackageInstallerViewImpl;
 import org.eclipse.che.plugin.artik.ide.keyworddoc.KeywordDocsServiceClient;
 import org.eclipse.che.plugin.artik.ide.keyworddoc.KeywordDocsServiceClientImpl;
 import org.eclipse.che.plugin.artik.ide.machine.DeviceServiceClient;
@@ -45,6 +46,7 @@ import org.eclipse.che.plugin.artik.ide.run.RunBinaryActionFactory;
 import org.eclipse.che.plugin.artik.ide.scp.action.PushToDeviceActionFactory;
 import org.eclipse.che.plugin.artik.ide.updatesdk.UpdateSDKView;
 import org.eclipse.che.plugin.artik.ide.updatesdk.UpdateSDKViewImpl;
+import org.eclipse.che.plugin.artik.ide.installpkg.PackageInstallerView;
 
 /**
  * Gin module for Artik extension.
@@ -62,6 +64,8 @@ public class ArtikGinModule extends AbstractGinModule {
 
         bind(DeviceDiscoveryServiceClient.class).to(DeviceDiscoveryServiceClientImpl.class).in(Singleton.class);
         bind(WsAgentURLModifier.class).to(CheWsAgentLinksModifier.class);
+
+        bind(PackageInstallerView.class).to(PackageInstallerViewImpl.class);
 
         bind(UpdateSDKView.class).to(UpdateSDKViewImpl.class).in(Singleton.class);
         bind(DocsPartView.class).to(DocsPartViewImpl.class).in(Singleton.class);

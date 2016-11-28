@@ -90,6 +90,32 @@ public interface ArtikLocalizationConstant extends Messages {
     @Key("showApiDoc.page.tooltip")
     String showApiDocPageTooltip();
 
+    //##########install package############
+    @Key("installPackage.action.title")
+    String installPackageActionTitle();
+
+    @Key("installPackage.action.description")
+    String installPackageActionActionDescription();
+
+    @Key("installPackage.title")
+    String installPackageTitle();
+
+    @Key("installPackage.overwrite")
+    String installPackageOverwrite();
+
+    @Key("installButton")
+    String installButton();
+
+    @Key("onlinePackageNameLable")
+    String onlinePackageNameLable();
+
+    @Key("chooseLocalPackageLable")
+    String chooseLocalPackageLable();
+
+    @Key("installPackageNoteLable")
+    String installPackageNoteLable();
+    //###################e###############
+
     @Key("updateSDK.action.title")
     String updateSDKActionTitle();
 

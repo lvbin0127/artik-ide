@@ -53,6 +53,7 @@ import org.eclipse.che.ide.websocket.rest.Unmarshallable;
 import org.eclipse.che.plugin.artik.ide.ArtikExtension;
 import org.eclipse.che.plugin.artik.ide.ArtikResources;
 import org.eclipse.che.plugin.artik.ide.machine.DeviceServiceClient;
+import org.eclipse.che.plugin.artik.ide.installpkg.PackageInstallerAction;
 
 import java.util.HashMap;
 import java.util.List;
@@ -220,6 +221,9 @@ public class DevelopmentModeManager implements MachineStateEvent.Handler {
 
         TurnProductionModeAction turnProductionModeAction = artikModeActionFactory.turnProductionModeAction(machine.getConfig().getName());
         machineMenu.add(turnProductionModeAction);
+
+        PackageInstallerAction packageInstallerAction = artikModeActionFactory.packageInstallerAction(sshMachines.get(machine.getConfig().getName()));
+        machineMenu.add(packageInstallerAction);
     }
 
     private void removeArtikProfileMenu(String machineName) {
