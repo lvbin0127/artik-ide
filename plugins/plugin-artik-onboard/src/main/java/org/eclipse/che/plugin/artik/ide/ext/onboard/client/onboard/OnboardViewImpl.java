@@ -34,6 +34,7 @@ public class OnboardViewImpl extends Window implements OnboardView {
     private static String newURL = "https://accounts.artik.cloud/signup?client_id=82da6e2e45fd4838b468e79e967f1bf7";
     private ActionDelegate delegate;
 
+    @Override
     public void setDelegate(ActionDelegate delegate) {
         this.delegate = delegate;
     }
@@ -52,6 +53,7 @@ public class OnboardViewImpl extends Window implements OnboardView {
         frame.setVisible(false);
     }
 
+    @Override
     public void getURL(String jumpUrl) {
 
     }
