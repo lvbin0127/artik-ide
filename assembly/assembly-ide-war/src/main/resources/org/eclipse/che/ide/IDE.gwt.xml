@@ -66,6 +66,7 @@
     <inherits name='org.eclipse.che.plugin.nodejs.NodeJs'/>
     <inherits name='org.eclipse.che.plugin.docker.client.dto.Dto'/>
     <inherits name='org.eclipse.che.plugin.artik.ide.info.ProductInfo'/>
+    <inherits name='org.eclipse.che.plugin.artik.ide.ext.onboard.OnboardExtension'/>
 
     <!-- Platform API GWT client dependencies                       -->
     <inherits name='org.eclipse.che.api.core.model.Model'/>

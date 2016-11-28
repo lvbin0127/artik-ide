@@ -30,5 +30,6 @@
         <module>plugin-artik-server</module>
         <module>plugin-artik-ide</module>
         <module>plugin-artik-help</module>
+        <module>plugin-artik-onboard</module>
     </modules>
 </project>

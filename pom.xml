@@ -86,6 +86,11 @@
             </dependency>
             <dependency>
                 <groupId>org.eclipse.artik.plugin</groupId>
+                <artifactId>artik-ide-plugin-onboard-ext</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.artik.plugin</groupId>
                 <artifactId>artik-ide-plugin-product-info</artifactId>
                 <version>${project.version}</version>
             </dependency>
