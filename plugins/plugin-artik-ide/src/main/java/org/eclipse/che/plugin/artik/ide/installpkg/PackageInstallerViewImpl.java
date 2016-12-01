@@ -17,12 +17,13 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.TextBox;
 import com.google.inject.Inject;
 import org.eclipse.che.ide.api.machine.WsAgentURLModifier;
 import org.eclipse.che.ide.ui.window.Window;
 import org.eclipse.che.plugin.artik.ide.ArtikLocalizationConstant;
-//import org.eclipse.che.ide.upload.file.PackageInstallerView;
 
 import javax.validation.constraints.NotNull;
 
